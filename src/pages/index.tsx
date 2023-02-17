@@ -12,17 +12,27 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <section className="grid place-content-center gap-6 min-h-screen">
+      <section className="grid place-content-center gap-6">
         <RichText />
         <Form />
       </section>
       {imageList.length > 0 && (
-        <section className="p-40 grid grid-cols-auto min-h-screen">
-          {imageList.map((imageURL, index) => (
-            <div key={index} className="relative w-full">
-              <Image alt="" fill={true} src={imageURL} />
-            </div>
-          ))}
+        <section id="genImgContainer">
+          <ul className="p-20 gap-6 grid grid-cols-auto min-h-screen">
+            {imageList.map((imageURL, index) => (
+              <li
+                key={index}
+                className="relative w-full rounded-xl overflow-hidden shadow-lg shadow-primary/40"
+              >
+                <Image
+                  alt=""
+                  fill={true}
+                  src={imageURL}
+                  onLoad={() => console.log("Cargadito")}
+                />
+              </li>
+            ))}
+          </ul>
         </section>
       )}
     </>

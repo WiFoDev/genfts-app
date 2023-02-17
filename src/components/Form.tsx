@@ -1,28 +1,36 @@
 import { useAtom } from "jotai";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { imageListAtom } from "@/pages/_app";
 
 export const Form = () => {
   const [prompt, setPrompt] = useState("");
-  const [_, setImageList] = useAtom(imageListAtom);
+  const [imageList, setImageList] = useAtom(imageListAtom);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    if (imageList.length > 0) {
+      const genImgContainer = document.getElementById("genImgContainer");
+
+      if (genImgContainer) {
+        genImgContainer.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [imageList]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const curatedPrompt = prompt.trim();
 
     if (!curatedPrompt) return;
-    fetch("/api/fakegen", {
+    const data = await fetch("/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ prompt: curatedPrompt }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setImageList(data);
-      });
+    }).then((res) => res.json());
+
+    setImageList(data);
   };
 
   return (
