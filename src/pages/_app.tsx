@@ -1,10 +1,14 @@
-import type {AppProps} from "next/app";
+import type { AppProps } from "next/app";
 
-import {Layout} from "@/Layout";
+import { atom } from "jotai";
+
+import { Layout } from "@/Layout";
 
 import "@/styles/globals.css";
 
-function MyApp({Component, pageProps}: AppProps) {
+export const imageListAtom = atom<string[]>([]);
+
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Component {...pageProps} />
