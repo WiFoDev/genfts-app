@@ -4,13 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#0f0e17",
-        headline: "#fffffe",
-        parragraf: "#a7a9be",
-        "button-text": "#fffffe",
-        primary: "#ff8906",
-        secondary: "#f25f4c",
-        tertiary: "#e53170",
+        background: "#fef6e4",
+        parragraf: "#172c66",
+        primary: "#001858",
+        secondary: "#f582ae",
+        tertiary: "#f3d2c1",
       },
       backgroundImage: (theme) => ({
         "gradient-rainbow":

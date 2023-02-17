@@ -8,13 +8,9 @@ body
   @apply h-full;
   @apply bg-background;
   @apply font-poppins;
-  @apply text-white;
+  @apply text-parragraf;
 }
 
 h1 {
-  @apply text-headline;
-}
-
-p { 
-  @apply text-parragraf;
+  @apply text-primary;
 }
